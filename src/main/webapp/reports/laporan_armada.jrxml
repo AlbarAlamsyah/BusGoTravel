@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="laporan_armada"
+              pageWidth="842"
+              pageHeight="595"
+              orientation="Landscape"
+              columnWidth="802"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="44444444-4444-4444-4444-444444444444">
+
+    <property name="net.sf.jasperreports.default.font.name" value="SansSerif"/>
+    <style name="HeaderStyle" fontName="SansSerif" fontSize="9" isBold="true" mode="Opaque" backcolor="#1E3A8A" forecolor="#FFFFFF"/>
+    <style name="DetailStyle" fontName="SansSerif" fontSize="9"/>
+
+    <queryString><![CDATA[SELECT kode_armada, nama_bus, plat_nomor, kapasitas, fasilitas, status FROM armada ORDER BY id_armada DESC]]></queryString>
+    <field name="kode_armada" class="java.lang.String"/>
+    <field name="nama_bus" class="java.lang.String"/>
+    <field name="plat_nomor" class="java.lang.String"/>
+    <field name="kapasitas" class="java.lang.Integer"/>
+    <field name="fasilitas" class="java.lang.String"/>
+    <field name="status" class="java.lang.String"/>
+
+    <title>
+        <band height="95">
+            <rectangle><reportElement x="0" y="0" width="802" height="72" backcolor="#1E3A8A" mode="Opaque"/><graphicElement><pen lineWidth="0.0"/></graphicElement></rectangle>
+            <staticText><reportElement x="0" y="12" width="802" height="24" forecolor="#FFFFFF"/><textElement textAlignment="Center" verticalAlignment="Middle"><font size="18" isBold="true"/></textElement><text><![CDATA[BUSGO TRAVEL]]></text></staticText>
+            <staticText><reportElement x="0" y="38" width="802" height="18" forecolor="#E0ECFF"/><textElement textAlignment="Center" verticalAlignment="Middle"><font size="12" isBold="true"/></textElement><text><![CDATA[LAPORAN DATA ARMADA]]></text></staticText>
+            <textField><reportElement x="0" y="58" width="802" height="14" forecolor="#FFFFFF"/><textElement textAlignment="Center" verticalAlignment="Middle"><font size="9"/></textElement><textFieldExpression><![CDATA["Dicetak pada: " + new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression></textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="32">
+            <rectangle><reportElement x="0" y="0" width="802" height="28" backcolor="#1E3A8A" mode="Opaque"/><graphicElement><pen lineWidth="0.0"/></graphicElement></rectangle>
+
+            <staticText>
+                <reportElement style="HeaderStyle" x="0" y="0" width="90" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Kode]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="90" y="0" width="175" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Nama Bus]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="265" y="0" width="115" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Plat Nomor]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="380" y="0" width="90" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[Kapasitas]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="470" y="0" width="210" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Fasilitas]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="680" y="0" width="122" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[Status]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="30">
+            <rectangle><reportElement x="0" y="0" width="802" height="28" backcolor="#FFFFFF" mode="Opaque"/><graphicElement><pen lineWidth="0.25" lineColor="#E2E8F0"/></graphicElement></rectangle>
+
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="0" y="0" width="90" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{kode_armada}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="90" y="0" width="175" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{nama_bus}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="265" y="0" width="115" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{plat_nomor}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="380" y="0" width="90" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{kapasitas} + " kursi"]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="470" y="0" width="210" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{fasilitas}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="680" y="0" width="122" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <pageFooter>
+        <band height="28">
+            <line><reportElement x="0" y="0" width="802" height="1" forecolor="#E2E8F0"/></line>
+            <staticText><reportElement x="0" y="7" width="300" height="18" forecolor="#64748B"/><textElement verticalAlignment="Middle"><font size="8"/></textElement><text><![CDATA[BusGo Travel - Laporan Data Armada]]></text></staticText>
+            <textField><reportElement x="620" y="7" width="182" height="18" forecolor="#64748B"/><textElement textAlignment="Right" verticalAlignment="Middle"><font size="8"/></textElement><textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER}]]></textFieldExpression></textField>
+        </band>
+    </pageFooter>
+
+    <noData>
+        <band height="180">
+            <staticText><reportElement x="0" y="40" width="802" height="30"/><textElement textAlignment="Center" verticalAlignment="Middle"><font size="16" isBold="true"/></textElement><text><![CDATA[BUSGO TRAVEL]]></text></staticText>
+            <staticText><reportElement x="0" y="80" width="802" height="25" forecolor="#64748B"/><textElement textAlignment="Center" verticalAlignment="Middle"/><text><![CDATA[Tidak ada data yang tersedia.]]></text></staticText>
+        </band>
+    </noData>
+</jasperReport>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="laporan_tujuan"
+              pageWidth="842"
+              pageHeight="595"
+              orientation="Landscape"
+              columnWidth="802"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="11111111-1111-1111-1111-111111111111">
+
+    <property name="net.sf.jasperreports.default.font.name" value="SansSerif"/>
+    <style name="HeaderStyle" fontName="SansSerif" fontSize="9" isBold="true" mode="Opaque" backcolor="#1E3A8A" forecolor="#FFFFFF"/>
+    <style name="DetailStyle" fontName="SansSerif" fontSize="9"/>
+
+    <queryString><![CDATA[SELECT kode_tujuan, kota_asal, kota_tujuan, harga_ekonomi, harga_bisnis, harga_eksekutif, status FROM tujuan ORDER BY id_tujuan DESC]]></queryString>
+    <field name="kode_tujuan" class="java.lang.String"/>
+    <field name="kota_asal" class="java.lang.String"/>
+    <field name="kota_tujuan" class="java.lang.String"/>
+    <field name="harga_ekonomi" class="java.math.BigDecimal"/>
+    <field name="harga_bisnis" class="java.math.BigDecimal"/>
+    <field name="harga_eksekutif" class="java.math.BigDecimal"/>
+    <field name="status" class="java.lang.String"/>
+
+    <title>
+        <band height="95">
+            <rectangle><reportElement x="0" y="0" width="802" height="72" backcolor="#1E3A8A" mode="Opaque"/><graphicElement><pen lineWidth="0.0"/></graphicElement></rectangle>
+            <staticText><reportElement x="0" y="12" width="802" height="24" forecolor="#FFFFFF"/><textElement textAlignment="Center" verticalAlignment="Middle"><font size="18" isBold="true"/></textElement><text><![CDATA[BUSGO TRAVEL]]></text></staticText>
+            <staticText><reportElement x="0" y="38" width="802" height="18" forecolor="#E0ECFF"/><textElement textAlignment="Center" verticalAlignment="Middle"><font size="12" isBold="true"/></textElement><text><![CDATA[LAPORAN DATA TUJUAN PERJALANAN]]></text></staticText>
+            <textField><reportElement x="0" y="58" width="802" height="14" forecolor="#FFFFFF"/><textElement textAlignment="Center" verticalAlignment="Middle"><font size="9"/></textElement><textFieldExpression><![CDATA["Dicetak pada: " + new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm").format(new java.util.Date())]]></textFieldExpression></textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="32">
+            <rectangle><reportElement x="0" y="0" width="802" height="28" backcolor="#1E3A8A" mode="Opaque"/><graphicElement><pen lineWidth="0.0"/></graphicElement></rectangle>
+
+            <staticText>
+                <reportElement style="HeaderStyle" x="0" y="0" width="90" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Kode]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="90" y="0" width="115" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Kota Asal]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="205" y="0" width="115" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Kota Tujuan]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="320" y="0" width="120" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <text><![CDATA[Ekonomi]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="440" y="0" width="120" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <text><![CDATA[Bisnis]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="560" y="0" width="130" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <text><![CDATA[Eksekutif]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="HeaderStyle" x="690" y="0" width="112" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[Status]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="30">
+            <rectangle><reportElement x="0" y="0" width="802" height="28" backcolor="#FFFFFF" mode="Opaque"/><graphicElement><pen lineWidth="0.25" lineColor="#E2E8F0"/></graphicElement></rectangle>
+
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="0" y="0" width="90" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{kode_tujuan}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="90" y="0" width="115" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{kota_asal}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="205" y="0" width="115" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{kota_tujuan}]]></textFieldExpression>
+            </textField>
+            <textField pattern="Rp #,##0" isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="320" y="0" width="120" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{harga_ekonomi}]]></textFieldExpression>
+            </textField>
+            <textField pattern="Rp #,##0" isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="440" y="0" width="120" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{harga_bisnis}]]></textFieldExpression>
+            </textField>
+            <textField pattern="Rp #,##0" isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="560" y="0" width="130" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{harga_eksekutif}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="DetailStyle" x="690" y="0" width="112" height="28"/>
+                <box leftPadding="6" rightPadding="6"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <pageFooter>
+        <band height="28">
+            <line><reportElement x="0" y="0" width="802" height="1" forecolor="#E2E8F0"/></line>
+            <staticText><reportElement x="0" y="7" width="300" height="18" forecolor="#64748B"/><textElement verticalAlignment="Middle"><font size="8"/></textElement><text><![CDATA[BusGo Travel - Laporan Data Tujuan]]></text></staticText>
+            <textField><reportElement x="620" y="7" width="182" height="18" forecolor="#64748B"/><textElement textAlignment="Right" verticalAlignment="Middle"><font size="8"/></textElement><textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER}]]></textFieldExpression></textField>
+        </band>
+    </pageFooter>
+
+    <noData>
+        <band height="180">
+            <staticText><reportElement x="0" y="40" width="802" height="30"/><textElement textAlignment="Center" verticalAlignment="Middle"><font size="16" isBold="true"/></textElement><text><![CDATA[BUSGO TRAVEL]]></text></staticText>
+            <staticText><reportElement x="0" y="80" width="802" height="25" forecolor="#64748B"/><textElement textAlignment="Center" verticalAlignment="Middle"/><text><![CDATA[Tidak ada data yang tersedia.]]></text></staticText>
+        </band>
+    </noData>
+</jasperReport>
